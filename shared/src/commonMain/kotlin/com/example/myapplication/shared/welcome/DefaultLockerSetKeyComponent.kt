@@ -7,17 +7,20 @@ import com.arkivanov.decompose.value.update
 import com.example.myapplication.shared.getPlatformName
 import com.example.myapplication.shared.welcome.WelcomeComponent.Model
 
-class DefaultWelcomeComponent(
+class DefaultLockerSetKeyComponent(
     private val componentContext: ComponentContext,
     private val onFinished: () -> Unit,
 ) : WelcomeComponent, ComponentContext by componentContext {
-
     // Consider preserving and managing the state via a store
     private val state = MutableValue(Model())
     override val model: Value<Model> = state
 
     override fun onUpdateGreetingText() {
-        state.update { it.copy(greetingText = "Welcome from ${getPlatformName()}") }
+        state.update {
+            // TODO: Use down string
+            "Selecting a key for the locker #$"
+            it.copy(greetingText = "Welcome from ${getPlatformName()}")
+        }
     }
 
     override fun onBackClicked() {
