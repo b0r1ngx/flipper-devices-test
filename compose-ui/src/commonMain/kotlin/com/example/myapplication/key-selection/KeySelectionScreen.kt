@@ -34,6 +34,7 @@ fun KeySelectionScreen(
     Column(modifier = modifier) {
         Title(title = title)
         Data(
+            title = title,
             entries = entries,
             onLockerSetKeyClick = onLockerSetKeyClick
         )
@@ -53,6 +54,7 @@ private fun Title(
 
 @Composable
 private fun Data(
+    title: String,
     entries: List<Pair<Int, Int?>>,
     onLockerSetKeyClick: (key: Int) -> Unit
 ) {
@@ -63,6 +65,7 @@ private fun Data(
                 thickness = 1.dp
             )
             Locker(
+                title = title,
                 locker = it.first,
                 key = it.second,
                 onClick = onLockerSetKeyClick
@@ -73,6 +76,7 @@ private fun Data(
 
 @Composable
 private fun Locker(
+    title: String,
     locker: Int,
     key: Int?,
     onClick: (key: Int) -> Unit,
@@ -89,9 +93,15 @@ private fun Locker(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(text = "$Locker $locker", style = RawEntry)
-        if (key != null) {
-            Text(text = "$Key $key", style = RawEntry)
+        if (title.first() == 'S') {
+            Text(text = "$Key$locker", style = RawEntry)
+        } else {
+            Text(text = "$Locker$locker", style = RawEntry)
+            if (key != null) {
+                Text(text = "$Key$key", style = RawEntry)
+            } else {
+                Text(text = KeyNotFound, style = RawEntry)
+            }
         }
     }
 }
