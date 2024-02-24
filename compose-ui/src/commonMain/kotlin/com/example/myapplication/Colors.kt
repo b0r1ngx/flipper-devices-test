@@ -4,8 +4,9 @@ import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.graphics.Color
 
 val LocalPallet =
-    compositionLocalOf<Pallet> { error("No local pallet") }
+    compositionLocalOf<LightPallet> { error("No local pallet") }
 
-data class Pallet(
-    val accent: Color = Color(0xFF00FFFFF)
+data class LightPallet(
+    val accent: Color = Color(0xFF00FFFFF),
+    val background: Color = Color.White
 )

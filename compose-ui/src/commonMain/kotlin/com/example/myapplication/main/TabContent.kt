@@ -1,14 +1,14 @@
 package com.example.myapplication.main
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.example.myapplication.LocalPallet
+import com.example.myapplication.`android-utils`.LocalChangeBarsColors
 import com.example.myapplication.`bottom-bar`.BottomBarComponent
 import com.example.myapplication.`key-selection`.KeySelectionScreen
 import com.example.myapplication.shared.`bottom-bar`.BottomBarTabEnum
@@ -23,6 +23,9 @@ internal fun TabContent(
     lockers: MutableMap<String, String?>,
     modifier: Modifier = Modifier,
 ) {
+    val pallet = LocalPallet.current
+    val changeBarsColor = LocalChangeBarsColors.current
+    SideEffect { changeBarsColor(pallet.background) }
     Scaffold(
         modifier = modifier,
         bottomBar = {

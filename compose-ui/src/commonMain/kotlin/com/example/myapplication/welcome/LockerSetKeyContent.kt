@@ -1,7 +1,6 @@
 package com.example.myapplication.welcome
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
@@ -18,7 +17,7 @@ internal fun LockerSetKeyContent(
 ) {
     val pallet = LocalPallet.current
     val changeBarsColor = LocalChangeBarsColors.current
-    SideEffect { changeBarsColor(pallet) }
+    SideEffect { changeBarsColor(pallet.accent) }
     Scaffold(modifier = modifier) {
         KeySelectionScreen(
             title = component.title,

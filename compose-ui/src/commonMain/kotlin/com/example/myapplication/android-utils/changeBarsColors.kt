@@ -1,7 +1,7 @@
 package com.example.myapplication.`android-utils`
 
 import androidx.compose.runtime.compositionLocalOf
-import com.example.myapplication.Pallet
+import androidx.compose.ui.graphics.Color
 
 val LocalChangeBarsColors =
-    compositionLocalOf<(pallet: Pallet) -> Unit> { error("No function available") }
+    compositionLocalOf<(color: Color) -> Unit> { error("No function available") }
