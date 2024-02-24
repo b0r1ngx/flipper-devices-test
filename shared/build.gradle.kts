@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.parcelize)
+    kotlin("plugin.serialization") version "1.9.22"
 }
 
 kotlin {

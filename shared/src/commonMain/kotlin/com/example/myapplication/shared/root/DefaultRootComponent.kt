@@ -9,14 +9,16 @@ import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.popTo
 import com.arkivanov.decompose.router.stack.push
 import com.arkivanov.decompose.value.Value
-import com.arkivanov.essenty.parcelable.Parcelable
-import com.arkivanov.essenty.parcelable.Parcelize
 import com.example.myapplication.shared.`bottom-bar`.BottomBarTabEnum
+import com.example.myapplication.shared.`bottom-bar`.Config
 import com.example.myapplication.shared.main.DefaultTabComponent
 import com.example.myapplication.shared.main.TabComponent
 import com.example.myapplication.shared.root.RootComponent.Child
-import com.example.myapplication.shared.welcome.DefaultLockerSetKeyComponent
-import com.example.myapplication.shared.welcome.WelcomeComponent
+import com.example.myapplication.shared.welcome.DefaultLockerSetKeyComponentL
+import com.example.myapplication.shared.welcome.LockerSetKeyComponentL
+
+abstract class DecomposeComponent internal constructor() {
+}
 
 class DefaultRootComponent(
     componentContext: ComponentContext,
@@ -27,6 +29,7 @@ class DefaultRootComponent(
     override val stack: Value<ChildStack<*, Child>> =
         childStack(
             source = navigation,
+            serializer = Config.serializer(),
             initialConfiguration = Config.Hope,
             handleBackButton = true,
             childFactory = ::child,
@@ -73,40 +76,12 @@ class DefaultRootComponent(
 
     private fun lockerSetKeyComponent(
         componentContext: ComponentContext
-    ): WelcomeComponent = DefaultLockerSetKeyComponent(
+    ): LockerSetKeyComponentL = DefaultLockerSetKeyComponentL(
         componentContext = componentContext,
         onFinished = navigation::pop,
     )
 
     override fun onBackClicked(toIndex: Int) {
         navigation.popTo(index = toIndex)
-    }
-
-    private sealed interface Config : Parcelable {
-        val enum: BottomBarTabEnum
-
-        @Parcelize
-        data object Hope : Config {
-            override val enum: BottomBarTabEnum
-                get() = BottomBarTabEnum.hope
-        }
-
-        @Parcelize
-        data object WeHave : Config {
-            override val enum: BottomBarTabEnum
-                get() = BottomBarTabEnum.weHave
-        }
-
-        @Parcelize
-        data object AChance : Config {
-            override val enum: BottomBarTabEnum
-                get() = BottomBarTabEnum.aChance
-        }
-
-        @Parcelize
-        data object LockerSetKey : Config {
-            override val enum: BottomBarTabEnum
-                get() = BottomBarTabEnum.hidden
-        }
     }
 }

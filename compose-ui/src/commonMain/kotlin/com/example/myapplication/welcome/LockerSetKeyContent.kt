@@ -15,12 +15,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.arkivanov.decompose.extensions.compose.jetbrains.subscribeAsState
-import com.example.myapplication.shared.welcome.WelcomeComponent
+import com.arkivanov.decompose.extensions.compose.subscribeAsState
+import com.example.myapplication.shared.welcome.LockerSetKeyComponentL
 
 @Composable
-internal fun WelcomeContent(
-    component: WelcomeComponent,
+internal fun LockerSetKeyContent(
+    component: LockerSetKeyComponentL,
     modifier: Modifier = Modifier,
 ) {
     val model by component.model.subscribeAsState()

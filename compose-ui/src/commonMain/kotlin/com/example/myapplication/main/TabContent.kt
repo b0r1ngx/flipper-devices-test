@@ -25,7 +25,6 @@ internal fun TabContent(
     modifier: Modifier = Modifier,
 ) {
     val selectedTab = childStack.active.configuration
-
     Scaffold(
         modifier = modifier
             // TODO: need to change colors of system bars

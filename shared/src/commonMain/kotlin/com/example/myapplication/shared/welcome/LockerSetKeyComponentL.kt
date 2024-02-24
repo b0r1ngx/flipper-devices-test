@@ -2,7 +2,7 @@ package com.example.myapplication.shared.welcome
 
 import com.arkivanov.decompose.value.Value
 
-interface WelcomeComponent {
+interface LockerSetKeyComponentL {
     val model: Value<Model>
 
     fun onUpdateGreetingText()
