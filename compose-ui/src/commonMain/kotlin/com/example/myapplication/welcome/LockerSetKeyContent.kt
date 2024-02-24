@@ -13,6 +13,7 @@ import com.example.myapplication.`android-utils`.LocalChangeBarsColors
 @Composable
 internal fun LockerSetKeyContent(
     component: LockerSetKeyComponent,
+    keys: List<Pair<Int, Int?>>,
     modifier: Modifier = Modifier,
 ) {
     val pallet = LocalPallet.current
@@ -21,7 +22,7 @@ internal fun LockerSetKeyContent(
     Scaffold(modifier = modifier) {
         KeySelectionScreen(
             title = component.title,
-            lockers = mutableMapOf("a" to null),
+            entries = keys,
             onLockerSetKeyClick = component::onSetKeyClick,
             modifier = Modifier.background(pallet.accent)
         )

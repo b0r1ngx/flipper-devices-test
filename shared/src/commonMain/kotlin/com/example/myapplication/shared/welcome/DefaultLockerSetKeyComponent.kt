@@ -1,25 +1,25 @@
 package com.example.myapplication.shared.welcome
 
 import com.arkivanov.decompose.ComponentContext
-import com.arkivanov.decompose.value.MutableValue
-import com.arkivanov.decompose.value.Value
-import com.arkivanov.decompose.value.update
 import com.example.myapplication.shared.Repository
-import com.example.myapplication.shared.getPlatformName
+import com.example.myapplication.shared.`bottom-bar`.BottomBarTabEnum
 
 class DefaultLockerSetKeyComponent(
     private val componentContext: ComponentContext,
+    private val tabEnum: BottomBarTabEnum,
+    private val locker: Int,
+    private val repository: Repository,
     private val onFinished: () -> Unit,
 ) : LockerSetKeyComponent, ComponentContext by componentContext {
-    // Consider preserving and managing the state via a store
-//    private val state = MutableValue(Model())
     override val title: String
-        get() = "Selecting a key for the locker #$"
+        get() = "Selecting a key for the locker #$locker"
 
-    override fun onSetKeyClick() {
-//        state.update {
-//            it.copy(greetingText = "Welcome from ${getPlatformName()}")
-//        }
+    // TODO: try to remove all !!, everywhere
+    override fun onSetKeyClick(key: Int) {
+        repository.lockerData.find {
+            it.first == tabEnum
+        }!!.second[locker] = key
+        onBackClicked()
     }
 
     override fun onBackClicked() {

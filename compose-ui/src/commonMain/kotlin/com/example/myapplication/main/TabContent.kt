@@ -20,7 +20,7 @@ internal fun TabContent(
     tab: BottomBarTabEnum,
     component: TabComponent,
     childStack: ChildStack<*, RootComponent.Child>,
-    lockers: MutableMap<String, String?>,
+    entries: List<Pair<Int, Int?>>,
     modifier: Modifier = Modifier,
 ) {
     val pallet = LocalPallet.current
@@ -37,7 +37,7 @@ internal fun TabContent(
     ) { paddingValues ->
         KeySelectionScreen(
             title = "${tab.secondName} tab",
-            lockers = lockers,
+            entries = entries,
             onLockerSetKeyClick = component::onLockerSetKeyClick,
             modifier = Modifier
                 .fillMaxSize()

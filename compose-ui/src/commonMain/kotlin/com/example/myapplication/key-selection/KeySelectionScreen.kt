@@ -20,17 +20,21 @@ import androidx.compose.ui.unit.dp
 import com.example.myapplication.RawEntry
 import com.example.myapplication.Title
 
+private const val Locker = "Locker #"
+private const val Key = "Key #"
+private const val KeyNotFound = "Key not found"
+
 @Composable
 fun KeySelectionScreen(
     title: String,
-    lockers: MutableMap<String, String?>,
-    onLockerSetKeyClick: () -> Unit,
+    entries: List<Pair<Int, Int?>>,
+    onLockerSetKeyClick: (key: Int) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(modifier = modifier) {
         Title(title = title)
         Data(
-            lockers = lockers,
+            entries = entries,
             onLockerSetKeyClick = onLockerSetKeyClick
         )
     }
@@ -49,12 +53,11 @@ private fun Title(
 
 @Composable
 private fun Data(
-    lockers: MutableMap<String, String?>,
-    onLockerSetKeyClick: () -> Unit
+    entries: List<Pair<Int, Int?>>,
+    onLockerSetKeyClick: (key: Int) -> Unit
 ) {
-    val rememberLockers = remember { lockers.toList() }
     LazyColumn {
-        items(rememberLockers) {
+        items(entries) {
             Divider(
                 color = Color.Black,
                 thickness = 1.dp
@@ -70,23 +73,25 @@ private fun Data(
 
 @Composable
 private fun Locker(
-    locker: String,
-    key: String?,
-    onClick: () -> Unit,
+    locker: Int,
+    key: Int?,
+    onClick: (key: Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Row(
         modifier = modifier
             .height(60.dp)
             .fillMaxWidth()
-            .clickable(onClick = onClick)
+            .clickable {
+                onClick(key ?: 0)
+            }
             .padding(15.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(text = locker, style = RawEntry)
+        Text(text = "$Locker $locker", style = RawEntry)
         if (key != null) {
-            Text(text = key, style = RawEntry)
+            Text(text = "$Key $key", style = RawEntry)
         }
     }
 }

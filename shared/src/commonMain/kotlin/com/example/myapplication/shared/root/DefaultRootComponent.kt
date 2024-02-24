@@ -23,6 +23,10 @@ class DefaultRootComponent(
     private val repository = Repository()
     private val navigation = StackNavigation<Config>()
 
+    // TODO: Must not be here :|
+    var fromTab: BottomBarTabEnum = BottomBarTabEnum.hope
+    var locker: Int = 0
+
     // TODO: enter BottomBarTabEnum here?
     override val stack: Value<ChildStack<*, Child>> = childStack(
         source = navigation,
@@ -86,6 +90,8 @@ class DefaultRootComponent(
     ): TabComponent = DefaultTabComponent(
         componentContext = componentContext,
         onLockerSetKey = {
+            fromTab = tab
+            locker = it
             navigation.bringToFront(
                 Config.Hidden
             )
@@ -97,6 +103,9 @@ class DefaultRootComponent(
         componentContext: ComponentContext
     ): LockerSetKeyComponent = DefaultLockerSetKeyComponent(
         componentContext = componentContext,
+        tabEnum = fromTab,
+        locker = locker,
+        repository = repository,
         onFinished = navigation::pop,
     )
 

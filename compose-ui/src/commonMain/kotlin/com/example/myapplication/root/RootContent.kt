@@ -46,18 +46,18 @@ fun RootContent(
                             tab = BottomBarTabEnum.hope,
                             component = instance.component,
                             childStack = childStack,
-                            lockers = repository.lockerData.find {
+                            entries = repository.lockerData.find {
                                 it.first == BottomBarTabEnum.hope
-                            }!!.second,
+                            }!!.second.toList(),
                         )
 
                     is Child.WeHave -> TabContent(
                         tab = BottomBarTabEnum.weHave,
                         component = instance.component,
                         childStack = childStack,
-                        lockers = repository.lockerData.find {
+                        entries = repository.lockerData.find {
                             it.first == BottomBarTabEnum.weHave
-                        }!!.second,
+                        }!!.second.toList(),
                     )
 
                     is Child.AChance ->
@@ -65,13 +65,14 @@ fun RootContent(
                             tab = BottomBarTabEnum.aChance,
                             component = instance.component,
                             childStack = childStack,
-                            lockers = repository.lockerData.find {
+                            entries = repository.lockerData.find {
                                 it.first == BottomBarTabEnum.aChance
-                            }!!.second,
+                            }!!.second.toList(),
                         )
 
                     is Child.LockerSetKey -> LockerSetKeyContent(
-                        component = instance.component
+                        component = instance.component,
+                        keys = repository.keys
                     )
                 }
             }
