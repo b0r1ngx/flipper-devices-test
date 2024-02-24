@@ -55,12 +55,28 @@ fun RootContent(
                             }!!.second,
                         )
 
+                    is Child.WeHave -> TabContent(
+                        tab = BottomBarTabEnum.weHave,
+                        component = instance.component,
+                        childStack = childStack,
+                        lockers = repository.data.find {
+                            it.first == BottomBarTabEnum.weHave
+                        }!!.second,
+                    )
+
+                    is Child.AChance ->
+                        TabContent(
+                            tab = BottomBarTabEnum.aChance,
+                            component = instance.component,
+                            childStack = childStack,
+                            lockers = repository.data.find {
+                                it.first == BottomBarTabEnum.aChance
+                            }!!.second,
+                        )
+
                     is Child.LockerSetKey -> LockerSetKeyContent(
                         component = instance.component
                     )
-
-                    is Child.AChance -> TODO()
-                    is Child.WeHave -> TODO()
                 }
             }
         }

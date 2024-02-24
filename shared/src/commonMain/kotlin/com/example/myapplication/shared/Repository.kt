@@ -8,11 +8,11 @@ private const val DATA_SIZE = 15
 
 class Repository {
     // TODO: @ReadOnly / Immutable / Stable
-    val data: MutableList<Pair<BottomBarTabEnum, MutableMap<String, String>>> = mutableListOf()
+    val data: MutableList<Pair<BottomBarTabEnum, MutableMap<String, String?>>> = mutableListOf()
 
     init {
         BottomBarTabEnum.entries.forEach {
-            val map = mutableMapOf<String, String>()
+            val map = mutableMapOf<String, String?>()
             repeat(DATA_SIZE) {
                 map["$Locker #${it + 1}"] = KeyNotFound
             }

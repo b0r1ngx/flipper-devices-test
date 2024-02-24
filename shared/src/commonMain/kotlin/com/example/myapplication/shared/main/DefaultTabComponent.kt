@@ -5,14 +5,14 @@ import com.example.myapplication.shared.`bottom-bar`.BottomBarTabEnum
 
 class DefaultTabComponent(
     componentContext: ComponentContext,
-    private val onLockerSetKeyClick: () -> Unit,
-    private val onTabClick: (BottomBarTabEnum) -> Unit,
+    private val onLockerSetKey: () -> Unit,
+    private val onTab: (BottomBarTabEnum) -> Unit,
 ) : TabComponent, ComponentContext by componentContext {
-    override fun onLockerSetKeyClicked() {
-        onLockerSetKeyClick()
+    override fun onLockerSetKeyClick() {
+        onLockerSetKey()
     }
 
-    override fun onTabClicked(tab: BottomBarTabEnum) {
-        onTabClick(tab)
+    override fun onTabClick(tab: BottomBarTabEnum) {
+        onTab(tab)
     }
 }

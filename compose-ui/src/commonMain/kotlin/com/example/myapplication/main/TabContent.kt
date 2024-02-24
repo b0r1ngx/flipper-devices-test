@@ -1,16 +1,11 @@
 package com.example.myapplication.main
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.material.Button
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.example.myapplication.LocalPallet
@@ -25,27 +20,22 @@ internal fun TabContent(
     tab: BottomBarTabEnum,
     component: TabComponent,
     childStack: ChildStack<*, RootComponent.Child>,
-    lockers: MutableMap<String, String>,
+    lockers: MutableMap<String, String?>,
     modifier: Modifier = Modifier,
 ) {
     Scaffold(
-        modifier = modifier
-            // TODO: need to change colors of system bars
-            .background(LocalPallet.current.accent)
-            .statusBarsPadding(),
+        modifier = modifier,
         bottomBar = {
             BottomBarComponent(
                 selectedItem = BottomBarTabEnum.hope,
-                onBottomBarClick = component::onTabClicked
+                onBottomBarClick = component::onTabClick
             )
         }
     ) { paddingValues ->
-//            Button(onClick = component::onLockerSetKeyClicked) {
-//                Text(text = "Show Welcome screen")
-//            }
         KeySelectionScreen(
-            tab = tab,
+            title = "${tab.secondName} tab",
             lockers = lockers,
+            onLockerSetKeyClick = component::onLockerSetKeyClick,
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)

@@ -23,31 +23,35 @@ import com.example.myapplication.Title
 
 @Composable
 fun KeySelectionScreen(
-    tab: BottomBarTabEnum,
-    lockers: MutableMap<String, String>,
+    title: String,
+    lockers: MutableMap<String, String?>,
+    onLockerSetKeyClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(modifier = modifier) {
-        Title(tab = tab)
-        Data(lockers = lockers)
+        Title(title = title)
+        Data(
+            lockers = lockers,
+            onLockerSetKeyClick = onLockerSetKeyClick
+        )
     }
 }
 
 @Composable
 private fun Title(
-    tab: BottomBarTabEnum,
+    title: String,
     modifier: Modifier = Modifier
-) {
-    Text(
-        text = "${tab.secondName} tab",
-        modifier = modifier.padding(15.dp),
-        style = Title,
-    )
-}
+) = Text(
+    text = title,
+    modifier = modifier.padding(15.dp),
+    style = Title,
+)
+
 
 @Composable
 private fun Data(
-    lockers: MutableMap<String, String>
+    lockers: MutableMap<String, String?>,
+    onLockerSetKeyClick: () -> Unit
 ) {
     val rememberLockers = remember { lockers.toList() }
     LazyColumn {
@@ -55,7 +59,7 @@ private fun Data(
             Locker(
                 locker = it.first,
                 key = it.second,
-                onClick = {}
+                onClick = onLockerSetKeyClick
             )
             if (i < rememberLockers.lastIndex)
                 Divider(

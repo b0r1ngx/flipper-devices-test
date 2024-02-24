@@ -15,6 +15,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -35,7 +36,9 @@ fun BottomBarComponent(
     onBottomBarClick: (BottomBarTabEnum) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val tabs = remember { BottomBarTabEnum.entries.toTypedArray() }
+    val tabs = remember {
+        BottomBarTabEnum.entries.toTypedArray()
+    }.dropLast(1)
     var selectedIndex by remember(selectedItem) {
         mutableIntStateOf(tabs.indexOf(selectedItem))
     }
@@ -105,4 +108,5 @@ private fun BottomBarTabEnum.icon() = when (this) {
     BottomBarTabEnum.hope -> Icons.Default.Home
     BottomBarTabEnum.weHave -> Icons.Default.Add
     BottomBarTabEnum.aChance -> Icons.Default.Call
+    BottomBarTabEnum.hidden -> Icons.Default.Search
 }

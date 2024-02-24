@@ -7,7 +7,6 @@ import com.arkivanov.decompose.router.stack.bringToFront
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.popTo
-import com.arkivanov.decompose.router.stack.push
 import com.arkivanov.decompose.value.Value
 import com.example.myapplication.shared.Repository
 import com.example.myapplication.shared.`bottom-bar`.BottomBarTabEnum
@@ -73,6 +72,12 @@ class DefaultRootComponent(
                 }
             )
         )
+
+        Config.Hidden -> Child.LockerSetKey(
+            lockerSetKeyComponent(
+                componentContext = childComponentContext
+            )
+        )
     }
 
     private fun tabComponent(
@@ -81,17 +86,13 @@ class DefaultRootComponent(
         onTabClick: (BottomBarTabEnum) -> Unit
     ): TabComponent = DefaultTabComponent(
         componentContext = componentContext,
-        onLockerSetKeyClick = {
+        onLockerSetKey = {
             navigation.bringToFront(
-                tab.toConfig()
+                Config.Hidden
             )
         },
-        onTabClick = onTabClick
+        onTab = onTabClick
     )
-
-    // Child.LockerSetKey(
-//        lockerSetKeyComponent(childComponentContext)
-//    )
 
     private fun lockerSetKeyComponent(
         componentContext: ComponentContext
