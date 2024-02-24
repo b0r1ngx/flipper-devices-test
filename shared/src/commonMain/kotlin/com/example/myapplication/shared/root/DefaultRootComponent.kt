@@ -19,6 +19,9 @@ import com.example.myapplication.shared.root.RootComponent.Child
 import com.example.myapplication.shared.`locker-set-key`.DefaultLockerSetKeyComponent
 import com.example.myapplication.shared.`locker-set-key`.LockerSetKeyComponent
 
+// TODO: Found a bug, when we navigate few times at BottomBar,
+//        stack of navigation is increasing
+//     - want to fix it now
 class DefaultRootComponent(
     componentContext: ComponentContext
 ) : RootComponent, ComponentContext by componentContext {
