@@ -9,20 +9,19 @@ import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.popTo
 import com.arkivanov.decompose.router.stack.push
 import com.arkivanov.decompose.value.Value
+import com.example.myapplication.shared.Repository
 import com.example.myapplication.shared.`bottom-bar`.BottomBarTabEnum
 import com.example.myapplication.shared.`bottom-bar`.Config
 import com.example.myapplication.shared.main.DefaultTabComponent
 import com.example.myapplication.shared.main.TabComponent
 import com.example.myapplication.shared.root.RootComponent.Child
-import com.example.myapplication.shared.welcome.DefaultLockerSetKeyComponentL
-import com.example.myapplication.shared.welcome.LockerSetKeyComponentL
-
-abstract class DecomposeComponent internal constructor() {
-}
+import com.example.myapplication.shared.welcome.DefaultLockerSetKeyComponent
+import com.example.myapplication.shared.welcome.LockerSetKeyComponent
 
 class DefaultRootComponent(
     componentContext: ComponentContext,
 ) : RootComponent, ComponentContext by componentContext {
+    private val repository = Repository()
     private val navigation = StackNavigation<Config>()
 
     // TODO: enter BottomBarTabEnum here?
@@ -41,42 +40,62 @@ class DefaultRootComponent(
     ): Child = when (config) {
         is Config.Hope -> Child.Hope(
             tabComponent(
-                childComponentContext,
-                onTabClick = { navigation.bringToFront(Config.Hope) }
+                tab = BottomBarTabEnum.hope,
+                componentContext = childComponentContext,
+                onTabClick = {
+                    navigation.bringToFront(
+                        Config.Hope
+                    )
+                }
             )
         )
 
         Config.WeHave -> Child.WeHave(
             tabComponent(
-                childComponentContext,
-                onTabClick = { navigation.bringToFront(Config.WeHave) }
+                tab = BottomBarTabEnum.weHave,
+                componentContext = childComponentContext,
+                onTabClick = {
+                    navigation.bringToFront(
+                        Config.WeHave
+                    )
+                }
             )
         )
 
         Config.AChance -> Child.AChance(
             tabComponent(
-                childComponentContext,
-                onTabClick = { navigation.bringToFront(Config.AChance) }
+                tab = BottomBarTabEnum.aChance,
+                componentContext = childComponentContext,
+                onTabClick = {
+                    navigation.bringToFront(
+                        Config.AChance
+                    )
+                }
             )
-        )
-
-        is Config.LockerSetKey -> Child.LockerSetKey(
-            lockerSetKeyComponent(childComponentContext)
         )
     }
 
     private fun tabComponent(
+        tab: BottomBarTabEnum,
         componentContext: ComponentContext,
         onTabClick: (BottomBarTabEnum) -> Unit
     ): TabComponent = DefaultTabComponent(
         componentContext = componentContext,
-        onLockerSetKeyClick = { navigation.push(Config.LockerSetKey) },
+        onLockerSetKeyClick = {
+            navigation.bringToFront(
+                tab.toConfig()
+            )
+        },
         onTabClick = onTabClick
     )
 
+    // Child.LockerSetKey(
+//        lockerSetKeyComponent(childComponentContext)
+//    )
+
     private fun lockerSetKeyComponent(
         componentContext: ComponentContext
-    ): LockerSetKeyComponentL = DefaultLockerSetKeyComponentL(
+    ): LockerSetKeyComponent = DefaultLockerSetKeyComponent(
         componentContext = componentContext,
         onFinished = navigation::pop,
     )

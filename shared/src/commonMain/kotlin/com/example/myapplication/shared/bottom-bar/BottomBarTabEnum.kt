@@ -7,5 +7,12 @@ enum class BottomBarTabEnum(
     hope("hope"),
     weHave("we have"),
     aChance("a chance"),
-    hidden("hidden")
+    hidden("hidden");
+
+    fun toConfig(): Config = when (this) {
+        hope -> Config.Hope
+        weHave -> Config.WeHave
+        aChance -> Config.AChance
+        hidden -> TODO()
+    }
 }

@@ -23,10 +23,4 @@ sealed interface Config {
         override val enum: BottomBarTabEnum
             get() = BottomBarTabEnum.aChance
     }
-
-    @Serializable
-    data object LockerSetKey : Config {
-        override val enum: BottomBarTabEnum
-            get() = BottomBarTabEnum.hidden
-    }
 }
