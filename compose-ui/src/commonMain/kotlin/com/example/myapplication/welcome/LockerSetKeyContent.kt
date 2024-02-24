@@ -7,7 +7,7 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import com.example.myapplication.LocalPallet
 import com.example.myapplication.`key-selection`.KeySelectionScreen
-import com.example.myapplication.shared.welcome.LockerSetKeyComponent
+import com.example.myapplication.shared.`locker-set-key`.LockerSetKeyComponent
 import com.example.myapplication.`android-utils`.LocalChangeBarsColors
 
 @Composable

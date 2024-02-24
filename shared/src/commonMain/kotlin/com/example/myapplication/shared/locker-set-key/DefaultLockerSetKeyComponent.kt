@@ -1,4 +1,4 @@
-package com.example.myapplication.shared.welcome
+package com.example.myapplication.shared.`locker-set-key`
 
 import com.arkivanov.decompose.ComponentContext
 import com.example.myapplication.shared.Repository
@@ -16,9 +16,9 @@ class DefaultLockerSetKeyComponent(
 
     // TODO: try to remove all !!, everywhere
     override fun onSetKeyClick(key: Int) {
-        repository.lockerData.find {
-            it.first == tabEnum
-        }!!.second[locker] = key
+        repository
+            .lockerData[tabEnum.ordinal]
+            .second[locker] = key
         onBackClicked()
     }
 

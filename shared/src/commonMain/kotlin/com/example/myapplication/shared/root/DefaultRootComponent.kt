@@ -14,13 +14,16 @@ import com.example.myapplication.shared.`bottom-bar`.Config
 import com.example.myapplication.shared.main.DefaultTabComponent
 import com.example.myapplication.shared.main.TabComponent
 import com.example.myapplication.shared.root.RootComponent.Child
-import com.example.myapplication.shared.welcome.DefaultLockerSetKeyComponent
-import com.example.myapplication.shared.welcome.LockerSetKeyComponent
+import com.example.myapplication.shared.`locker-set-key`.DefaultLockerSetKeyComponent
+import com.example.myapplication.shared.`locker-set-key`.LockerSetKeyComponent
 
 class DefaultRootComponent(
-    componentContext: ComponentContext,
+    componentContext: ComponentContext
 ) : RootComponent, ComponentContext by componentContext {
-    private val repository = Repository()
+    // TODO: Provide Repository
+    override val repository = Repository()
+
+    // TODO: Provide Navigation
     private val navigation = StackNavigation<Config>()
 
     // TODO: Must not be here :|
@@ -28,7 +31,7 @@ class DefaultRootComponent(
     var locker: Int = 0
 
     // TODO: enter BottomBarTabEnum here?
-    override val stack: Value<ChildStack<*, Child>> = childStack(
+    override val stack: Value<ChildStack<Config, Child>> = childStack(
         source = navigation,
         serializer = Config.serializer(),
         initialConfiguration = Config.Hope,
@@ -44,11 +47,6 @@ class DefaultRootComponent(
             tabComponent(
                 tab = BottomBarTabEnum.hope,
                 componentContext = childComponentContext,
-                onTabClick = {
-                    navigation.bringToFront(
-                        Config.Hope
-                    )
-                }
             )
         )
 
@@ -56,11 +54,6 @@ class DefaultRootComponent(
             tabComponent(
                 tab = BottomBarTabEnum.weHave,
                 componentContext = childComponentContext,
-                onTabClick = {
-                    navigation.bringToFront(
-                        Config.WeHave
-                    )
-                }
             )
         )
 
@@ -68,11 +61,6 @@ class DefaultRootComponent(
             tabComponent(
                 tab = BottomBarTabEnum.aChance,
                 componentContext = childComponentContext,
-                onTabClick = {
-                    navigation.bringToFront(
-                        Config.AChance
-                    )
-                }
             )
         )
 
@@ -86,7 +74,6 @@ class DefaultRootComponent(
     private fun tabComponent(
         tab: BottomBarTabEnum,
         componentContext: ComponentContext,
-        onTabClick: (BottomBarTabEnum) -> Unit
     ): TabComponent = DefaultTabComponent(
         componentContext = componentContext,
         onLockerSetKey = {
@@ -95,8 +82,7 @@ class DefaultRootComponent(
             navigation.bringToFront(
                 Config.Hidden
             )
-        },
-        onTab = onTabClick
+        }
     )
 
     private fun lockerSetKeyComponent(
@@ -111,5 +97,11 @@ class DefaultRootComponent(
 
     override fun onBackClicked(toIndex: Int) {
         navigation.popTo(index = toIndex)
+    }
+
+    override fun onTabClick(tab: BottomBarTabEnum) {
+        navigation.bringToFront(
+            configuration = tab.toConfig()
+        )
     }
 }

@@ -2,14 +2,20 @@ package com.example.myapplication.shared.root
 
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.value.Value
+import com.example.myapplication.shared.Repository
 import com.example.myapplication.shared.`bottom-bar`.BottomBarTabEnum
+import com.example.myapplication.shared.`bottom-bar`.Config
 import com.example.myapplication.shared.main.TabComponent
-import com.example.myapplication.shared.welcome.LockerSetKeyComponent
+import com.example.myapplication.shared.`locker-set-key`.LockerSetKeyComponent
 
 interface RootComponent {
-    val stack: Value<ChildStack<*, Child>>
+    val stack: Value<ChildStack<Config, Child>>
+    val repository: Repository
+//    val repository: Value<Repository>
 
     fun onBackClicked(toIndex: Int)
+
+    fun onTabClick(tab: BottomBarTabEnum)
 
     sealed class Child {
         class Hope(val component: TabComponent) : Child()

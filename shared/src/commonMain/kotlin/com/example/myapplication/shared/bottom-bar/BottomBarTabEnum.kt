@@ -1,5 +1,8 @@
 package com.example.myapplication.shared.`bottom-bar`
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class BottomBarTabEnum(
     val secondName: String
 ) {

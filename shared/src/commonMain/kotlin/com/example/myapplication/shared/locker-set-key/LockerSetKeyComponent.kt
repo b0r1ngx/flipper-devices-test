@@ -1,4 +1,4 @@
-package com.example.myapplication.shared.welcome
+package com.example.myapplication.shared.`locker-set-key`
 
 interface LockerSetKeyComponent {
     val title: String

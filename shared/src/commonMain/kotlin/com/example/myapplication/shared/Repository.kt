@@ -21,4 +21,13 @@ class Repository {
         }
         lockerData = _data.toList()
     }
+
+    fun setKey(
+        tabEnum: BottomBarTabEnum,
+        locker: Int,
+        key: Int
+    ) {
+        lockerData[tabEnum.ordinal]
+            .second[locker] = key
+    }
 }

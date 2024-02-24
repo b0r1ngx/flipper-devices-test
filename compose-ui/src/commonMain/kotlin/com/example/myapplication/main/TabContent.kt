@@ -26,14 +26,9 @@ internal fun TabContent(
     val pallet = LocalPallet.current
     val changeBarsColor = LocalChangeBarsColors.current
     SideEffect { changeBarsColor(pallet.background) }
+
     Scaffold(
-        modifier = modifier,
-        bottomBar = {
-            BottomBarComponent(
-                selectedItem = BottomBarTabEnum.hope,
-                onBottomBarClick = component::onTabClick
-            )
-        }
+        modifier = modifier
     ) { paddingValues ->
         KeySelectionScreen(
             title = "${tab.secondName} tab",
