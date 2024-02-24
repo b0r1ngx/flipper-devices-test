@@ -14,7 +14,7 @@ class Repository {
         BottomBarTabEnum.entries.forEach {
             val map = mutableMapOf<String, String>()
             repeat(DATA_SIZE) {
-                map[Locker] = KeyNotFound
+                map["$Locker #${it + 1}"] = KeyNotFound
             }
             data.add(it to map)
         }

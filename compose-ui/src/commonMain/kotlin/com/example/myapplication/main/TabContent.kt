@@ -3,6 +3,8 @@ package com.example.myapplication.main
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material.Button
 import androidx.compose.material.Scaffold
@@ -20,12 +22,12 @@ import com.example.myapplication.shared.root.RootComponent
 
 @Composable
 internal fun TabContent(
+    tab: BottomBarTabEnum,
     component: TabComponent,
     childStack: ChildStack<*, RootComponent.Child>,
+    lockers: MutableMap<String, String>,
     modifier: Modifier = Modifier,
 ) {
-    val selectedTab = childStack.active
-
     Scaffold(
         modifier = modifier
             // TODO: need to change colors of system bars
@@ -37,18 +39,16 @@ internal fun TabContent(
                 onBottomBarClick = component::onTabClicked
             )
         }
-    ) {
-        Box(
-            modifier = Modifier.fillMaxSize()
-                // TODO: need to change colors of system bars
-                .background(LocalPallet.current.accent)
-                .statusBarsPadding(),
-            contentAlignment = Alignment.Center,
-        ) {
-            Button(onClick = component::onLockerSetKeyClicked) {
-                Text(text = "Show Welcome screen")
-            }
-        }
-        KeySelectionScreen()
+    ) { paddingValues ->
+//            Button(onClick = component::onLockerSetKeyClicked) {
+//                Text(text = "Show Welcome screen")
+//            }
+        KeySelectionScreen(
+            tab = tab,
+            lockers = lockers,
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+        )
     }
 }

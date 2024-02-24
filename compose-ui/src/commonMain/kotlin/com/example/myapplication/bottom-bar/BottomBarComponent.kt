@@ -2,12 +2,19 @@ package com.example.myapplication.`bottom-bar`
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Divider
+import androidx.compose.material.Icon
 import androidx.compose.material.TabPosition
 import androidx.compose.material.TabRow
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Call
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -18,6 +25,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.unit.dp
+import com.example.myapplication.BottomBarEntry
 import com.example.myapplication.shared.`bottom-bar`.BottomBarTabEnum
 
 @Composable
@@ -70,13 +79,30 @@ private fun Tab(
         modifier = modifier
             .clickable(
                 onClick = onClick
-            ),
-        horizontalAlignment = Alignment.CenterHorizontally
+            )
+            .padding(top = 10.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(5.dp)
     ) {
-
-//        Image(
-//            tab.secondName
-//        )
-        Text(text = tab.secondName)
+        Icon(
+            imageVector = tab.icon(),
+            contentDescription = tab.secondName
+        )
+        Text(
+            text = tab.secondName,
+            style = BottomBarEntry
+        )
+        if (selected) {
+            Divider(
+                color = Color.Black,
+                thickness = 1.dp
+            )
+        }
     }
+}
+
+private fun BottomBarTabEnum.icon() = when (this) {
+    BottomBarTabEnum.hope -> Icons.Default.Home
+    BottomBarTabEnum.weHave -> Icons.Default.Add
+    BottomBarTabEnum.aChance -> Icons.Default.Call
 }
