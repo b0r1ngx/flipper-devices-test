@@ -7,7 +7,6 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.extensions.compose.stack.Children
@@ -17,8 +16,7 @@ import com.example.myapplication.main.TabContent
 import com.example.myapplication.shared.`bottom-bar`.BottomBarTabEnum
 import com.example.myapplication.shared.root.RootComponent
 import com.example.myapplication.shared.root.RootComponent.Child
-import com.example.myapplication.shared.root.toBottomBarEnum
-import com.example.myapplication.welcome.LockerSetKeyContent
+import com.example.myapplication.`locker-set-key`.LockerSetKeyContent
 
 private const val TAG = "RootContent:"
 

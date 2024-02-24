@@ -13,11 +13,13 @@ import com.example.myapplication.root.RootContent
 import com.example.myapplication.shared.root.DefaultRootComponent
 import com.example.myapplication.`android-utils`.LocalChangeBarsColors
 
+// TODO: Not using any of DI's
+// TODO: Not work with Splash
+// TODO: Using only LightTheme (Pallet)
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val pallet = LightPallet()
-//        val viewModel: AppViewModel by viewModels()
         val root = DefaultRootComponent(
             componentContext = defaultComponentContext()
         )
