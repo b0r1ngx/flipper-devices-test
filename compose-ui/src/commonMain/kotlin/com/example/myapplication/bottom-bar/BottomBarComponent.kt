@@ -98,7 +98,7 @@ private fun Tab(
         if (selected) {
             Divider(
                 color = Color.Black,
-                thickness = 1.dp
+                thickness = 3.dp
             )
         }
     }

@@ -56,16 +56,15 @@ private fun Data(
     val rememberLockers = remember { lockers.toList() }
     LazyColumn {
         itemsIndexed(rememberLockers) { i, it ->
+            Divider(
+                color = Color.Black,
+                thickness = 1.dp
+            )
             Locker(
                 locker = it.first,
                 key = it.second,
                 onClick = onLockerSetKeyClick
             )
-            if (i < rememberLockers.lastIndex)
-                Divider(
-                    color = Color.Black,
-                    thickness = 1.dp
-                )
         }
     }
 }

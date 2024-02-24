@@ -3,15 +3,11 @@ package com.example.myapplication.root
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.extensions.compose.stack.Children
-import com.arkivanov.decompose.extensions.compose.stack.animation.fade
-import com.arkivanov.decompose.extensions.compose.stack.animation.stackAnimation
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import com.example.myapplication.main.TabContent
 import com.example.myapplication.shared.Repository
@@ -50,7 +46,7 @@ fun RootContent(
                             tab = BottomBarTabEnum.hope,
                             component = instance.component,
                             childStack = childStack,
-                            lockers = repository.data.find {
+                            lockers = repository.lockerData.find {
                                 it.first == BottomBarTabEnum.hope
                             }!!.second,
                         )
@@ -59,7 +55,7 @@ fun RootContent(
                         tab = BottomBarTabEnum.weHave,
                         component = instance.component,
                         childStack = childStack,
-                        lockers = repository.data.find {
+                        lockers = repository.lockerData.find {
                             it.first == BottomBarTabEnum.weHave
                         }!!.second,
                     )
@@ -69,7 +65,7 @@ fun RootContent(
                             tab = BottomBarTabEnum.aChance,
                             component = instance.component,
                             childStack = childStack,
-                            lockers = repository.data.find {
+                            lockers = repository.lockerData.find {
                                 it.first == BottomBarTabEnum.aChance
                             }!!.second,
                         )
