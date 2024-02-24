@@ -87,8 +87,6 @@ fun RootContent(
                         )
                     }
                 }
-                println("$TAG ${component.repository}")
-                println("$TAG ${component.repository.lockerData}")
             }
         }
     }

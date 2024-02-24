@@ -81,7 +81,6 @@ class DefaultRootComponent(
         onLockerSetKey = {
             fromTab.value = tab
             locker.value = it
-            println("locker: ${locker.value}")
             navigation.bringToFront(
                 Config.Hidden
             )

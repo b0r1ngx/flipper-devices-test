@@ -16,7 +16,6 @@ class DefaultLockerSetKeyComponent(
         "Selecting a key for the locker #${locker.value}"
     )
 
-    // TODO: try to remove all !!, everywhere
     override fun onSetKeyClick(key: Int) {
         repository
             .lockerData[tabEnum.value.ordinal]

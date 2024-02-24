@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.example.myapplication.shared.Repository
 import com.example.myapplication.shared.`bottom-bar`.BottomBarTabEnum
 
+// TODO: Not used in current project-world
 class AppViewModel(
     repository: Repository = Repository()
 ) : ViewModel() {
