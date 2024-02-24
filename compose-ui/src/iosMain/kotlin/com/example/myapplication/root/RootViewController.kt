@@ -9,5 +9,8 @@ import platform.UIKit.UIViewController
 
 fun rootViewController(root: RootComponent): UIViewController =
     ComposeUIViewController {
-        RootContent(component = root, modifier = Modifier.fillMaxSize())
+        RootContent(
+            component = root,
+            modifier = Modifier.fillMaxSize()
+        )
     }

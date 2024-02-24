@@ -24,14 +24,13 @@ class DefaultRootComponent(
     private val navigation = StackNavigation<Config>()
 
     // TODO: enter BottomBarTabEnum here?
-    override val stack: Value<ChildStack<*, Child>> =
-        childStack(
-            source = navigation,
-            serializer = Config.serializer(),
-            initialConfiguration = Config.Hope,
-            handleBackButton = true,
-            childFactory = ::child,
-        )
+    override val stack: Value<ChildStack<*, Child>> = childStack(
+        source = navigation,
+        serializer = Config.serializer(),
+        initialConfiguration = Config.Hope,
+        handleBackButton = true,
+        childFactory = ::child,
+    )
 
     private fun child(
         config: Config,
