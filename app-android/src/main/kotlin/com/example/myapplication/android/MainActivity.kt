@@ -8,11 +8,13 @@ import android.view.WindowInsetsController
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.graphics.toArgb
 import com.arkivanov.decompose.defaultComponentContext
 import com.example.myapplication.LocalPallet
 import com.example.myapplication.Pallet
 import com.example.myapplication.root.RootContent
 import com.example.myapplication.shared.root.DefaultRootComponent
+import com.example.myapplication.`android-utils`.LocalChangeBarsColors
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,9 +25,16 @@ class MainActivity : ComponentActivity() {
         )
         setContent {
             CompositionLocalProvider(LocalPallet provides pallet) {
-                RootContent(component = root)
+                CompositionLocalProvider(LocalChangeBarsColors provides ::changeBarsColors) {
+                    RootContent(component = root)
+                }
             }
         }
+    }
+
+    private fun changeBarsColors(pallet: Pallet) {
+        window.navigationBarColor = pallet.accent.toArgb()
+        window.statusBarColor = pallet.accent.toArgb()
     }
 
     override fun onResume() {
