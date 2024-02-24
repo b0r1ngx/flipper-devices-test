@@ -13,11 +13,11 @@ import com.arkivanov.decompose.value.Value
 import com.example.myapplication.shared.Repository
 import com.example.myapplication.shared.`bottom-bar`.BottomBarTabEnum
 import com.example.myapplication.shared.`bottom-bar`.Config
+import com.example.myapplication.shared.`locker-set-key`.DefaultLockerSetKeyComponent
+import com.example.myapplication.shared.`locker-set-key`.LockerSetKeyComponent
 import com.example.myapplication.shared.main.DefaultTabComponent
 import com.example.myapplication.shared.main.TabComponent
 import com.example.myapplication.shared.root.RootComponent.Child
-import com.example.myapplication.shared.`locker-set-key`.DefaultLockerSetKeyComponent
-import com.example.myapplication.shared.`locker-set-key`.LockerSetKeyComponent
 
 // TODO: Found a bug, when we navigate few times at BottomBar,
 //        stack of navigation is increasing
@@ -105,6 +105,10 @@ class DefaultRootComponent(
     }
 
     override fun onTabClick(tab: BottomBarTabEnum) {
+        // TODO: pushToFront / bringToFront - works same?
+        //       and in both variants of usage, its doesn't helps me
+        //       to make same logic, that when we navigate few times at BottomBar
+        //       not increase a navigation stack
         navigation.bringToFront(
             configuration = tab.toConfig()
         )
