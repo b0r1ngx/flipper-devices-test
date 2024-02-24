@@ -50,7 +50,6 @@ private fun Title(
     style = Title,
 )
 
-
 @Composable
 private fun Data(
     title: String,
@@ -81,18 +80,22 @@ private fun Locker(
     onClick: (key: Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    // TODO: do something with that:C
+    //       in real world, I must re-develop this thing
+    val isLockerSetKeyScreen = title.first() == 'S'
+
     Row(
         modifier = modifier
             .height(60.dp)
             .fillMaxWidth()
             .clickable {
-                onClick(key ?: 0)
+                onClick(locker)
             }
             .padding(15.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        if (title.first() == 'S') {
+        if (isLockerSetKeyScreen) {
             Text(text = "$Key$locker", style = RawEntry)
         } else {
             Text(text = "$Locker$locker", style = RawEntry)

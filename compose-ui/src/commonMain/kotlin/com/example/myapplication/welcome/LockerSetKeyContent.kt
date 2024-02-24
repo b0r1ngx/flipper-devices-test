@@ -21,7 +21,7 @@ internal fun LockerSetKeyContent(
     SideEffect { changeBarsColor(pallet.accent) }
     Scaffold(modifier = modifier) {
         KeySelectionScreen(
-            title = component.title,
+            title = component.title.value,
             entries = keys,
             onLockerSetKeyClick = component::onSetKeyClick,
             modifier = Modifier.background(pallet.accent)

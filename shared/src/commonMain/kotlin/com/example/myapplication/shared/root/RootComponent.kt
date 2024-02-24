@@ -11,7 +11,6 @@ import com.example.myapplication.shared.`locker-set-key`.LockerSetKeyComponent
 interface RootComponent {
     val stack: Value<ChildStack<Config, Child>>
     val repository: Repository
-//    val repository: Value<Repository>
 
     fun onBackClicked(toIndex: Int)
 

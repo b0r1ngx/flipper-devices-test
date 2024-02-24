@@ -3,10 +3,12 @@ package com.example.myapplication.shared.root
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.StackNavigation
+import com.arkivanov.decompose.router.stack.active
 import com.arkivanov.decompose.router.stack.bringToFront
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.popTo
+import com.arkivanov.decompose.value.MutableValue
 import com.arkivanov.decompose.value.Value
 import com.example.myapplication.shared.Repository
 import com.example.myapplication.shared.`bottom-bar`.BottomBarTabEnum
@@ -25,12 +27,6 @@ class DefaultRootComponent(
 
     // TODO: Provide Navigation
     private val navigation = StackNavigation<Config>()
-
-    // TODO: Must not be here :|
-    var fromTab: BottomBarTabEnum = BottomBarTabEnum.hope
-    var locker: Int = 0
-
-    // TODO: enter BottomBarTabEnum here?
     override val stack: Value<ChildStack<Config, Child>> = childStack(
         source = navigation,
         serializer = Config.serializer(),
@@ -38,6 +34,12 @@ class DefaultRootComponent(
         handleBackButton = true,
         childFactory = ::child,
     )
+
+    // TODO: Must not be here :|
+    var fromTab = MutableValue(
+        stack.active.configuration.enum
+    )
+    var locker = MutableValue(0)
 
     private fun child(
         config: Config,
@@ -77,8 +79,9 @@ class DefaultRootComponent(
     ): TabComponent = DefaultTabComponent(
         componentContext = componentContext,
         onLockerSetKey = {
-            fromTab = tab
-            locker = it
+            fromTab.value = tab
+            locker.value = it
+            println("locker: ${locker.value}")
             navigation.bringToFront(
                 Config.Hidden
             )
