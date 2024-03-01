@@ -24,7 +24,7 @@ internal fun LockerSetKeyContent(
             title = component.title,
             entries = keys,
             onLockerSetKeyClick = component::onSetKeyClick,
-            modifier = Modifier.background(pallet.accent)
+            modifier = Modifier.background(pallet.accent),
         )
     }
 }

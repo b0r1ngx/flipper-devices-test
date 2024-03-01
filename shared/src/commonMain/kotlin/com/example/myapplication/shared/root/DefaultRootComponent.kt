@@ -28,10 +28,6 @@ import com.example.myapplication.shared.root.RootComponent.Child
 class DefaultRootComponent(
     componentContext: ComponentContext,
 ) : RootComponent, ComponentContext by componentContext {
-    // TODO: Provide Repository
-    override val repository = Repository()
-
-    // TODO: Provide Navigation?
     private val navigation = StackNavigation<Config>()
     override val stack: Value<ChildStack<Config, Child>> = childStack(
         source = navigation,
@@ -41,11 +37,12 @@ class DefaultRootComponent(
         childFactory = ::child,
     )
 
-    private val lockerViewModel = viewModelWithFactoryWithoutRemember(key = this) {
+    override val lockerViewModel = viewModelWithFactoryWithoutRemember(key = this) {
         LockerViewModel(
             initialLockerUiState = LockerUiState(
                 previousTab = stack.active.configuration.enum,
                 pickedLocker = 0,
+                isLockerSetKey = false
             )
         )
     }
@@ -100,15 +97,11 @@ class DefaultRootComponent(
         }
     )
 
-
     private fun lockerSetKeyComponent(
         componentContext: ComponentContext
     ): LockerSetKeyComponent = DefaultLockerSetKeyComponent(
         componentContext = componentContext,
-//        lockerViewModel = lockerViewModel,
-        tabEnum = lockerViewModel.uiState.value.previousTab,
-        locker = lockerViewModel.uiState.value.pickedLocker,
-        repository = repository,
+        lockerViewModel = lockerViewModel,
         onFinished = navigation::pop,
     )
 

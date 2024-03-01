@@ -3,6 +3,7 @@ package com.example.myapplication.android
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
@@ -12,6 +13,8 @@ import com.example.myapplication.LightPallet
 import com.example.myapplication.root.RootContent
 import com.example.myapplication.shared.root.DefaultRootComponent
 import com.example.myapplication.androidutils.LocalChangeBarsColors
+import com.example.myapplication.shared.lifecycle.LockerViewModel
+import java.util.concurrent.locks.Lock
 
 // TODO: Not using any of DI's
 // TODO: Not work with Splash

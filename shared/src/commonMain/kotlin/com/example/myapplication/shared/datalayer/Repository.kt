@@ -5,9 +5,9 @@ import com.example.myapplication.shared.bottombar.BottomBarTabEnum
 private const val DATA_SIZE = 15
 
 class Repository {
-    private val _data: MutableList<Pair<BottomBarTabEnum, MutableMap<Int, Int?>>> =
+    private val _lockersData: MutableList<Pair<BottomBarTabEnum, MutableMap<Int, Int?>>> =
         mutableListOf()
-    val lockerData: List<Pair<BottomBarTabEnum, MutableMap<Int, Int?>>>
+    val lockersData: List<Pair<BottomBarTabEnum, MutableMap<Int, Int?>>>
 
     val keys = List<Pair<Int, Int?>>(15) { it + 1 to null }
 
@@ -17,9 +17,9 @@ class Repository {
             repeat(DATA_SIZE) {
                 map[it + 1] = null
             }
-            _data.add(it to map)
+            _lockersData.add(it to map)
         }
-        lockerData = _data.toList()
+        lockersData = _lockersData.toList()
     }
 
     fun setKey(
@@ -27,7 +27,10 @@ class Repository {
         locker: Int,
         key: Int
     ) {
-        lockerData[tabEnum.ordinal]
-            .second[locker] = key
+        lockersData[tabEnum.ordinal].second[locker] = key
+    }
+
+    fun getLockersToKeysAsList(tab: BottomBarTabEnum): List<Pair<Int, Int?>> {
+        return lockersData.find { it.first == tab }!!.second.toList()
     }
 }
