@@ -19,6 +19,7 @@ essenty = "2.0.0-alpha03"
 appcompat = "1.6.1"
 kotlinxCoroutinesCore = "1.8.0"
 anvil = "2.4.9" # https://github.com/square/anvil/releases
+splashscreen = "1.1.0-alpha02" # https://developer.android.com/jetpack/androidx/releases/core
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
@@ -40,3 +41,4 @@ essenty-lifecycle = { group = "com.arkivanov.essenty", name = "lifecycle", versi
 
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
+splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "splashscreen" }

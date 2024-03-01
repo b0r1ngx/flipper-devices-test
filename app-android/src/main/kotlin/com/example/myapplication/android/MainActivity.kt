@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.arkivanov.decompose.defaultComponentContext
 import com.example.myapplication.LocalPallet
 import com.example.myapplication.LightPallet
@@ -21,6 +22,7 @@ import java.util.concurrent.locks.Lock
 // TODO: Using only LightTheme (Pallet)
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
         val pallet = LightPallet()
         val root = DefaultRootComponent(

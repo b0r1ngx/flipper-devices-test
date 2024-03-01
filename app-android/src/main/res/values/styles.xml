@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/background</item>
         <item name="colorPrimaryDark">@color/background</item>
@@ -10,5 +9,9 @@
         <item name="android:navigationBarColor">@color/white</item>
         <item name="android:backgroundDimAmount">0.15</item>
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+    </style>
+
+    <style name="AppTheme.SplashTheme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>
 </resources>

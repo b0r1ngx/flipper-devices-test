@@ -44,4 +44,5 @@ dependencies {
     implementation(libs.androidx.activity.activityCompose)
     implementation(compose.foundation)
     implementation(libs.appcompat)
+    implementation(libs.splashscreen)
 }
