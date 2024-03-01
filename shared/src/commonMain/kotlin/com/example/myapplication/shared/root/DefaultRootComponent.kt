@@ -8,11 +8,12 @@ import com.arkivanov.decompose.router.stack.bringToFront
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.popTo
-import com.arkivanov.decompose.value.MutableValue
 import com.arkivanov.decompose.value.Value
 import com.example.myapplication.shared.datalayer.Repository
 import com.example.myapplication.shared.bottombar.BottomBarTabEnum
 import com.example.myapplication.shared.bottombar.Config
+import com.example.myapplication.shared.datalayer.LockerUiState
+import com.example.myapplication.shared.lifecycle.LockerViewModel
 import com.example.myapplication.shared.lifecycle.viewModelWithFactoryWithoutRemember
 import com.example.myapplication.shared.lockersetkey.DefaultLockerSetKeyComponent
 import com.example.myapplication.shared.lockersetkey.LockerSetKeyComponent
@@ -29,7 +30,7 @@ class DefaultRootComponent(
     // TODO: Provide Repository
     override val repository = Repository()
 
-    // TODO: Provide Navigation
+    // TODO: Provide Navigation?
     private val navigation = StackNavigation<Config>()
     override val stack: Value<ChildStack<Config, Child>> = childStack(
         source = navigation,
@@ -39,15 +40,14 @@ class DefaultRootComponent(
         childFactory = ::child,
     )
 
-//    private val lockerViewModel = viewModelWithFactoryWithoutRemember(key = this) {
-//
-//    }
-
-    // TODO: both usage of this variables, must be used from LockerViewModel
-    var fromTab = MutableValue(
-        stack.active.configuration.enum
-    )
-    var locker = MutableValue(0)
+    private val lockerViewModel = viewModelWithFactoryWithoutRemember(key = this) {
+        LockerViewModel(
+            initialLockerUiState = LockerUiState(
+                previousTab = stack.active.configuration.enum,
+                pickedLocker = 0,
+            )
+        )
+    }
 
     private fun child(
         config: Config,
@@ -87,20 +87,25 @@ class DefaultRootComponent(
     ): TabComponent = DefaultTabComponent(
         componentContext = componentContext,
         onLockerSetKey = {
-            fromTab.value = tab
-            locker.value = it
-            navigation.bringToFront(
-                Config.Hidden
-            )
+            lockerViewModel.onLockerSetKeyNavigate(
+                previousTab = tab,
+                pickedLocker = it
+            ) {
+                navigation.bringToFront(
+                    Config.Hidden
+                )
+            }
         }
     )
+
 
     private fun lockerSetKeyComponent(
         componentContext: ComponentContext
     ): LockerSetKeyComponent = DefaultLockerSetKeyComponent(
         componentContext = componentContext,
-        tabEnum = fromTab,
-        locker = locker,
+//        lockerViewModel = lockerViewModel,
+        tabEnum = lockerViewModel.uiState.value.previousTab,
+        locker = lockerViewModel.uiState.value.pickedLocker,
         repository = repository,
         onFinished = navigation::pop,
     )

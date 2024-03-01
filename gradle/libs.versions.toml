@@ -21,7 +21,6 @@ kotlinxCoroutinesCore = "1.8.0"
 anvil = "2.4.9" # https://github.com/square/anvil/releases
 
 [plugins]
-
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
@@ -32,7 +31,6 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 square-anvil = { id = "com.squareup.anvil", version.ref = "anvil" }
 
 [libraries]
-
 androidx-activity-activityCompose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidx-activityCompose" }
 
 decompose-decompose = { group = "com.arkivanov.decompose", name = "decompose", version.ref = "decompose" }

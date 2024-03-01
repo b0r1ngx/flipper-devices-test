@@ -7,19 +7,17 @@ import com.example.myapplication.shared.bottombar.BottomBarTabEnum
 
 class DefaultLockerSetKeyComponent(
     private val componentContext: ComponentContext,
-    private val tabEnum: MutableValue<BottomBarTabEnum>,
-    private val locker: MutableValue<Int>,
+    private val tabEnum: BottomBarTabEnum,
+    private val locker: Int,
     private val repository: Repository,
     private val onFinished: () -> Unit,
 ) : LockerSetKeyComponent, ComponentContext by componentContext {
-    override val title = MutableValue(
-        "Selecting a key for the locker #${locker.value}"
-    )
+    override val title = "Selecting a key for the locker #${locker}"
 
     override fun onSetKeyClick(key: Int) {
         repository
-            .lockerData[tabEnum.value.ordinal]
-            .second[locker.value] = key
+            .lockerData[tabEnum.ordinal]
+            .second[locker] = key
         onBackClicked()
     }
 
