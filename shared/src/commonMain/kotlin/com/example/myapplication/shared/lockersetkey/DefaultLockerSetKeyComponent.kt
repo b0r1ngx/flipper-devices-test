@@ -1,9 +1,9 @@
-package com.example.myapplication.shared.`locker-set-key`
+package com.example.myapplication.shared.lockersetkey
 
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.value.MutableValue
-import com.example.myapplication.shared.Repository
-import com.example.myapplication.shared.`bottom-bar`.BottomBarTabEnum
+import com.example.myapplication.shared.datalayer.Repository
+import com.example.myapplication.shared.bottombar.BottomBarTabEnum
 
 class DefaultLockerSetKeyComponent(
     private val componentContext: ComponentContext,

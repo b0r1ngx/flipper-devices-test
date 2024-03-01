@@ -2,11 +2,11 @@ package com.example.myapplication.shared.root
 
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.value.Value
-import com.example.myapplication.shared.Repository
-import com.example.myapplication.shared.`bottom-bar`.BottomBarTabEnum
-import com.example.myapplication.shared.`bottom-bar`.Config
+import com.example.myapplication.shared.datalayer.Repository
+import com.example.myapplication.shared.bottombar.BottomBarTabEnum
+import com.example.myapplication.shared.bottombar.Config
 import com.example.myapplication.shared.main.TabComponent
-import com.example.myapplication.shared.`locker-set-key`.LockerSetKeyComponent
+import com.example.myapplication.shared.lockersetkey.LockerSetKeyComponent
 
 interface RootComponent {
     val stack: Value<ChildStack<Config, Child>>

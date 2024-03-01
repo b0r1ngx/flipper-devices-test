@@ -1,6 +1,5 @@
 package com.example.myapplication.`bottom-bar`
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -28,7 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.myapplication.BottomBarEntry
-import com.example.myapplication.shared.`bottom-bar`.BottomBarTabEnum
+import com.example.myapplication.shared.bottombar.BottomBarTabEnum
 
 @Composable
 fun BottomBarComponent(

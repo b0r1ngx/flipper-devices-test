@@ -13,7 +13,7 @@ import com.arkivanov.decompose.extensions.compose.stack.Children
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import com.example.myapplication.`bottom-bar`.BottomBarComponent
 import com.example.myapplication.main.TabContent
-import com.example.myapplication.shared.`bottom-bar`.BottomBarTabEnum
+import com.example.myapplication.shared.bottombar.BottomBarTabEnum
 import com.example.myapplication.shared.root.RootComponent
 import com.example.myapplication.shared.root.RootComponent.Child
 import com.example.myapplication.`locker-set-key`.LockerSetKeyContent

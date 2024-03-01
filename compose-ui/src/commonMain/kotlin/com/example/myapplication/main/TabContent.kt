@@ -9,9 +9,8 @@ import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.example.myapplication.LocalPallet
 import com.example.myapplication.`android-utils`.LocalChangeBarsColors
-import com.example.myapplication.`bottom-bar`.BottomBarComponent
 import com.example.myapplication.`key-selection`.KeySelectionScreen
-import com.example.myapplication.shared.`bottom-bar`.BottomBarTabEnum
+import com.example.myapplication.shared.bottombar.BottomBarTabEnum
 import com.example.myapplication.shared.main.TabComponent
 import com.example.myapplication.shared.root.RootComponent
 

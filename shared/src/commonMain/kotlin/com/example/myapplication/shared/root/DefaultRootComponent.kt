@@ -10,11 +10,12 @@ import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.popTo
 import com.arkivanov.decompose.value.MutableValue
 import com.arkivanov.decompose.value.Value
-import com.example.myapplication.shared.Repository
-import com.example.myapplication.shared.`bottom-bar`.BottomBarTabEnum
-import com.example.myapplication.shared.`bottom-bar`.Config
-import com.example.myapplication.shared.`locker-set-key`.DefaultLockerSetKeyComponent
-import com.example.myapplication.shared.`locker-set-key`.LockerSetKeyComponent
+import com.example.myapplication.shared.datalayer.Repository
+import com.example.myapplication.shared.bottombar.BottomBarTabEnum
+import com.example.myapplication.shared.bottombar.Config
+import com.example.myapplication.shared.lifecycle.viewModelWithFactoryWithoutRemember
+import com.example.myapplication.shared.lockersetkey.DefaultLockerSetKeyComponent
+import com.example.myapplication.shared.lockersetkey.LockerSetKeyComponent
 import com.example.myapplication.shared.main.DefaultTabComponent
 import com.example.myapplication.shared.main.TabComponent
 import com.example.myapplication.shared.root.RootComponent.Child
@@ -23,7 +24,7 @@ import com.example.myapplication.shared.root.RootComponent.Child
 //        stack of navigation is increasing
 //     - want to fix it now
 class DefaultRootComponent(
-    componentContext: ComponentContext
+    componentContext: ComponentContext,
 ) : RootComponent, ComponentContext by componentContext {
     // TODO: Provide Repository
     override val repository = Repository()
@@ -38,7 +39,11 @@ class DefaultRootComponent(
         childFactory = ::child,
     )
 
-    // TODO: Must not be here :|
+//    private val lockerViewModel = viewModelWithFactoryWithoutRemember(key = this) {
+//
+//    }
+
+    // TODO: both usage of this variables, must be used from LockerViewModel
     var fromTab = MutableValue(
         stack.active.configuration.enum
     )

@@ -1,7 +1,6 @@
 package com.example.myapplication.shared.main
 
 import com.arkivanov.decompose.ComponentContext
-import com.example.myapplication.shared.`bottom-bar`.BottomBarTabEnum
 
 class DefaultTabComponent(
     componentContext: ComponentContext,

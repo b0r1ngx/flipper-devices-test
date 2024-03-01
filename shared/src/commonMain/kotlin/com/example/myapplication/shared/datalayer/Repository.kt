@@ -1,6 +1,6 @@
-package com.example.myapplication.shared
+package com.example.myapplication.shared.datalayer
 
-import com.example.myapplication.shared.`bottom-bar`.BottomBarTabEnum
+import com.example.myapplication.shared.bottombar.BottomBarTabEnum
 
 private const val DATA_SIZE = 15
 

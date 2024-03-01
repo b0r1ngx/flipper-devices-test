@@ -1,4 +1,4 @@
-package com.example.myapplication.shared.`locker-set-key`
+package com.example.myapplication.shared.lockersetkey
 
 import com.arkivanov.decompose.value.MutableValue
 

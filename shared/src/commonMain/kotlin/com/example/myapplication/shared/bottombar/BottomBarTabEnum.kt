@@ -1,4 +1,4 @@
-package com.example.myapplication.shared.`bottom-bar`
+package com.example.myapplication.shared.bottombar
 
 import kotlinx.serialization.Serializable
 
