@@ -49,9 +49,6 @@ fun RootContent(
                 // TODO: Not work with bottomBarState, like that?
                 bottomBarState.value = true
                 when (val instance = it.instance) {
-                    // can't usage few enumeration in one is,
-                    // because then we have instance.component as a Child class
-                    // TODO: workaround, Child.LockerSetKey must be as component of BottomBar
                     is Child.Hope -> TabContent(
                         component = instance.component,
                         childStack = childStack,
