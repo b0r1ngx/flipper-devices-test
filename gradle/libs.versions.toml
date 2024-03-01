@@ -18,6 +18,7 @@ essenty = "2.0.0-alpha03"
 
 appcompat = "1.6.1"
 kotlinxCoroutinesCore = "1.8.0"
+anvil = "2.4.9" # https://github.com/square/anvil/releases
 
 [plugins]
 
@@ -27,6 +28,8 @@ kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref =
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "compose-jetbrains" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+square-anvil = { id = "com.squareup.anvil", version.ref = "anvil" }
 
 [libraries]
 
