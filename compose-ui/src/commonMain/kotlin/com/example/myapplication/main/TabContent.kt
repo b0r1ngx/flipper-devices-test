@@ -8,8 +8,8 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.example.myapplication.LocalPallet
-import com.example.myapplication.`android-utils`.LocalChangeBarsColors
-import com.example.myapplication.`key-selection`.KeySelectionScreen
+import com.example.myapplication.androidutils.LocalChangeBarsColors
+import com.example.myapplication.keyselection.KeySelectionScreen
 import com.example.myapplication.shared.bottombar.BottomBarTabEnum
 import com.example.myapplication.shared.main.TabComponent
 import com.example.myapplication.shared.root.RootComponent

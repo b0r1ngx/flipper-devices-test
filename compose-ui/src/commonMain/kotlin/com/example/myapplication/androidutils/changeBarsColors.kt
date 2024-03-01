@@ -1,4 +1,4 @@
-package com.example.myapplication.`android-utils`
+package com.example.myapplication.androidutils
 
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.graphics.Color

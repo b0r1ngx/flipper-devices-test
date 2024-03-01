@@ -1,4 +1,4 @@
-package com.example.myapplication.`locker-set-key`
+package com.example.myapplication.lockersetkey
 
 import androidx.compose.foundation.background
 import androidx.compose.material.Scaffold
@@ -6,9 +6,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import com.example.myapplication.LocalPallet
-import com.example.myapplication.`key-selection`.KeySelectionScreen
+import com.example.myapplication.keyselection.KeySelectionScreen
 import com.example.myapplication.shared.lockersetkey.LockerSetKeyComponent
-import com.example.myapplication.`android-utils`.LocalChangeBarsColors
+import com.example.myapplication.androidutils.LocalChangeBarsColors
 
 @Composable
 internal fun LockerSetKeyContent(

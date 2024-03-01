@@ -11,7 +11,7 @@ import com.example.myapplication.LocalPallet
 import com.example.myapplication.LightPallet
 import com.example.myapplication.root.RootContent
 import com.example.myapplication.shared.root.DefaultRootComponent
-import com.example.myapplication.`android-utils`.LocalChangeBarsColors
+import com.example.myapplication.androidutils.LocalChangeBarsColors
 
 // TODO: Not using any of DI's
 // TODO: Not work with Splash

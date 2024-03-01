@@ -1,5 +1,13 @@
-package com.example.myapplication.`bottom-bar`
+package com.example.myapplication.bottombar
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkOut
+import androidx.compose.animation.shrinkVertically
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -25,6 +33,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import com.example.myapplication.BottomBarEntry
 import com.example.myapplication.shared.bottombar.BottomBarTabEnum
@@ -45,10 +54,16 @@ fun BottomBarComponent(
     var tabPositions by remember {
         mutableStateOf(emptyList<TabPosition>())
     }
-    if (bottomBarState.value) {
+    val isVisible by remember { bottomBarState }
+    AnimatedVisibility(
+        visible = isVisible,
+        enter = fadeIn() + slideInVertically(
+            initialOffsetY = { it / 2 }
+        ),
+        exit = shrinkVertically() + fadeOut()
+    ) {
         TabRow(
-            modifier = modifier
-                .fillMaxWidth(),
+            modifier = modifier.fillMaxWidth(),
             backgroundColor = Color.Transparent,
             selectedTabIndex = selectedIndex,
             indicator = { tabPositions = it },

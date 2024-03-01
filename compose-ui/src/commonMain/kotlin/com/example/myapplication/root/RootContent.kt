@@ -11,12 +11,12 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.extensions.compose.stack.Children
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
-import com.example.myapplication.`bottom-bar`.BottomBarComponent
+import com.example.myapplication.bottombar.BottomBarComponent
 import com.example.myapplication.main.TabContent
 import com.example.myapplication.shared.bottombar.BottomBarTabEnum
 import com.example.myapplication.shared.root.RootComponent
 import com.example.myapplication.shared.root.RootComponent.Child
-import com.example.myapplication.`locker-set-key`.LockerSetKeyContent
+import com.example.myapplication.lockersetkey.LockerSetKeyContent
 
 private const val TAG = "RootContent:"
 

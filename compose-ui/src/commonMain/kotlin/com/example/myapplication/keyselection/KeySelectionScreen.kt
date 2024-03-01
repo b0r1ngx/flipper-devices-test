@@ -1,4 +1,4 @@
-package com.example.myapplication.`key-selection`
+package com.example.myapplication.keyselection
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement

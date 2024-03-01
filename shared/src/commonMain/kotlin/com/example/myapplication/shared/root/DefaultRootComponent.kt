@@ -86,15 +86,16 @@ class DefaultRootComponent(
         componentContext: ComponentContext,
     ): TabComponent = DefaultTabComponent(
         componentContext = componentContext,
-        onLockerSetKey = {
+        onLockerSetKey = { pickedLockerKey ->
             lockerViewModel.onLockerSetKeyNavigate(
                 previousTab = tab,
-                pickedLocker = it
-            ) {
-                navigation.bringToFront(
-                    Config.Hidden
-                )
-            }
+                pickedLocker = pickedLockerKey,
+                navigateTo = {
+                    navigation.bringToFront(
+                        Config.Hidden
+                    )
+                }
+            )
         }
     )
 
