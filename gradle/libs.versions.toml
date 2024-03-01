@@ -19,6 +19,7 @@ essenty = "2.0.0-alpha03"
 appcompat = "1.6.1"
 kotlinxCoroutinesCore = "1.8.0"
 anvil = "2.4.9" # https://github.com/square/anvil/releases
+dagger = "2.51" # https://github.com/google/dagger/releases
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
@@ -35,8 +36,9 @@ androidx-activity-activityCompose = { group = "androidx.activity", name = "activ
 
 decompose-decompose = { group = "com.arkivanov.decompose", name = "decompose", version.ref = "decompose" }
 decompose-extensionsComposeJetbrains = { group = "com.arkivanov.decompose", name = "extensions-compose", version.ref = "decompose" }
-
 essenty-lifecycle = { group = "com.arkivanov.essenty", name = "lifecycle", version.ref = "essenty" }
 
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
+dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
+dagger-kapt = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }

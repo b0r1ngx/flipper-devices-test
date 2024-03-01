@@ -3,6 +3,11 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.square.anvil)
+    id("kotlin-kapt")
+}
+
+anvil {
+    generateDaggerFactories.set(true)
 }
 
 kotlin {
@@ -37,6 +42,11 @@ kotlin {
                 api(libs.decompose.decompose)
                 api(libs.essenty.lifecycle)
                 implementation(libs.kotlinx.coroutines.core)
+                implementation(libs.dagger)
+//                configurations["kapt"]
+//                    .dependencies.add(
+//                        project("com.google.dagger:dagger-compiler:2.51")
+//                    )
             }
         }
         val commonTest by getting {
