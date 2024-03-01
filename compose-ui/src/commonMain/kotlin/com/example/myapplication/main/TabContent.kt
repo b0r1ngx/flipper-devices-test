@@ -10,18 +10,19 @@ import com.arkivanov.decompose.router.stack.ChildStack
 import com.example.myapplication.LocalPallet
 import com.example.myapplication.androidutils.LocalChangeBarsColors
 import com.example.myapplication.keyselection.KeySelectionScreen
-import com.example.myapplication.shared.bottombar.BottomBarTabEnum
 import com.example.myapplication.shared.main.TabComponent
 import com.example.myapplication.shared.root.RootComponent
+import com.example.myapplication.shared.root.toBottomBarEnum
 
 @Composable
 internal fun TabContent(
-    tab: BottomBarTabEnum,
     component: TabComponent,
     childStack: ChildStack<*, RootComponent.Child>,
     entries: List<Pair<Int, Int?>>,
     modifier: Modifier = Modifier,
 ) {
+    val selectedTab = childStack.active.instance.toBottomBarEnum()
+
     val pallet = LocalPallet.current
     val changeBarsColor = LocalChangeBarsColors.current
     SideEffect { changeBarsColor(pallet.background) }
@@ -30,7 +31,7 @@ internal fun TabContent(
         modifier = modifier
     ) { paddingValues ->
         KeySelectionScreen(
-            title = "${tab.secondName} tab",
+            title = "${selectedTab.secondName} tab",
             entries = entries,
             onLockerSetKeyClick = component::onLockerSetKeyClick,
             modifier = Modifier

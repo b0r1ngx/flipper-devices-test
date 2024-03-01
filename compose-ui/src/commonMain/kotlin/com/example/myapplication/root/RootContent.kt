@@ -41,33 +41,30 @@ fun RootContent(
             )
         }
     ) { paddingValues ->
-        Box(Modifier.fillMaxSize().padding(paddingValues)) {
+        Box(modifier = Modifier.fillMaxSize().padding(paddingValues)) {
             Children(
                 stack = component.stack,
                 modifier = Modifier.fillMaxSize(),
             ) {
-                // TODO: Not work with that, like that?
+                // TODO: Not work with bottomBarState, like that?
                 bottomBarState.value = true
                 when (val instance = it.instance) {
                     // can't usage few enumeration in one is,
                     // because then we have instance.component as a Child class
                     // TODO: workaround, Child.LockerSetKey must be as component of BottomBar
                     is Child.Hope -> TabContent(
-                        tab = selectedTab,
                         component = instance.component,
                         childStack = childStack,
                         entries = lockerViewModel.getLockersToKeysAsList(selectedTab),
                     )
 
                     is Child.WeHave -> TabContent(
-                        tab = selectedTab,
                         component = instance.component,
                         childStack = childStack,
                         entries = lockerViewModel.getLockersToKeysAsList(selectedTab),
                     )
 
                     is Child.AChance -> TabContent(
-                        tab = selectedTab,
                         component = instance.component,
                         childStack = childStack,
                         entries = lockerViewModel.getLockersToKeysAsList(selectedTab),
