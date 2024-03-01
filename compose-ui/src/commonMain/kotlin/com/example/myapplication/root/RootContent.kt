@@ -12,13 +12,10 @@ import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.extensions.compose.stack.Children
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import com.example.myapplication.bottombar.BottomBarComponent
+import com.example.myapplication.lockersetkey.LockerSetKeyContent
 import com.example.myapplication.main.TabContent
-import com.example.myapplication.shared.bottombar.BottomBarTabEnum
 import com.example.myapplication.shared.root.RootComponent
 import com.example.myapplication.shared.root.RootComponent.Child
-import com.example.myapplication.lockersetkey.LockerSetKeyContent
-import com.example.myapplication.shared.main.TabComponent
-import com.example.myapplication.shared.root.toBottomBarEnum
 
 private const val TAG = "RootContent:"
 
