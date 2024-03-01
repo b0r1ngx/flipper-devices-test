@@ -1,7 +1,7 @@
 package com.example.myapplication.shared.lifecycle
 
 import com.example.myapplication.shared.bottombar.BottomBarTabEnum
-import com.example.myapplication.shared.datalayer.LockerUiState
+import com.example.myapplication.shared.model.LockerUiState
 import com.example.myapplication.shared.datalayer.Repository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

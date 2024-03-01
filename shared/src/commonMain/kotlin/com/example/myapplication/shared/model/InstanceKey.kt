@@ -1,4 +1,4 @@
-package com.example.myapplication.shared.datalayer
+package com.example.myapplication.shared.model
 
 import kotlin.reflect.KClass
 

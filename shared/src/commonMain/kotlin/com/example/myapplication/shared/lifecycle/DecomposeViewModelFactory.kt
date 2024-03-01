@@ -2,7 +2,7 @@ package com.example.myapplication.shared.lifecycle
 
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.essenty.instancekeeper.getOrCreate
-import com.example.myapplication.shared.datalayer.InstanceKey
+import com.example.myapplication.shared.model.InstanceKey
 
 inline fun <reified VM : DecomposeViewModel> ComponentContext.viewModelWithFactoryWithoutRemember(
     key: Any?,

@@ -1,4 +1,4 @@
-package com.example.myapplication.shared.datalayer
+package com.example.myapplication.shared.model
 
 import com.example.myapplication.shared.bottombar.BottomBarTabEnum
 

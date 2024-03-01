@@ -9,10 +9,9 @@ import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.popTo
 import com.arkivanov.decompose.value.Value
-import com.example.myapplication.shared.datalayer.Repository
 import com.example.myapplication.shared.bottombar.BottomBarTabEnum
 import com.example.myapplication.shared.bottombar.Config
-import com.example.myapplication.shared.datalayer.LockerUiState
+import com.example.myapplication.shared.model.LockerUiState
 import com.example.myapplication.shared.lifecycle.LockerViewModel
 import com.example.myapplication.shared.lifecycle.viewModelWithFactoryWithoutRemember
 import com.example.myapplication.shared.lockersetkey.DefaultLockerSetKeyComponent
