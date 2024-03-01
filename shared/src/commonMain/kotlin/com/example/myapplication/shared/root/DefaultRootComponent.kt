@@ -21,7 +21,8 @@ import com.example.myapplication.shared.main.DefaultTabComponent
 import com.example.myapplication.shared.main.TabComponent
 import com.example.myapplication.shared.root.RootComponent.Child
 
-// TODO: Found a bug, when we navigate few times at BottomBar,
+// TODO: Found a not same behaviour from reference,
+//        when we navigate few times at BottomBar,
 //        stack of navigation is increasing
 //     - want to fix it now
 class DefaultRootComponent(
